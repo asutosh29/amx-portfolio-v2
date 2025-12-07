@@ -16,8 +16,8 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Developer | Portfolio",
-  description: "Full Stack Developer & UI Designer Portfolio",
+  title: "Asutosh Maharana | Portfolio",
+  description: "Asutosh Maharana. Full stack developer. AI enthusiast.",
 };
 
 import Navbar from "@/components/layout/Navbar";
@@ -37,7 +37,7 @@ export default function RootLayout({
         className={`${pixelify.variable} ${rajdhani.variable} antialiased bg-background text-foreground font-body`}
       >
         <Navbar />
-        <main className="min-h-screen pt-16">
+        <main className="min-h-screen pt-16 md:pl-20">
           {children}
         </main>
         <Socials />

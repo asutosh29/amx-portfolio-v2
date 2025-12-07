@@ -5,11 +5,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 export default function Footer() {
     return (
         <footer className="w-full py-8 border-t border-border bg-background">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} {profile.name}. All rights reserved.
-                </p>
-
+            <div className="container mx-auto px-4 flex flex-col items-center gap-6">
                 <div className="flex gap-6 items-center">
                     {profile.socials.github && (
                         <Link href={profile.socials.github} target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
@@ -27,6 +23,10 @@ export default function Footer() {
                         </Link>
                     )}
                 </div>
+
+                <p className="text-sm text-muted-foreground text-center font-body tracking-wider">
+                    © {new Date().getFullYear()} {profile.name}. All rights reserved.
+                </p>
             </div>
         </footer>
     );

@@ -90,16 +90,23 @@ export default function Skills() {
 
     return (
         <section id="skills" className="min-h-screen flex flex-col justify-center py-20 container mx-auto px-4 md:px-6">
+            {/* Heading Section - Outside Grid */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-12"
+            >
+                <h2 className="text-4xl md:text-5xl font-bold mb-2 font-heading uppercase text-primary">Technical Arsenal</h2>
+                <p className="text-muted-foreground text-lg font-body">My weapons of choice.</p>
+            </motion.div>
+
             <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[180px]"
             >
-                <div className="md:col-span-3 mb-4">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-2 font-heading uppercase text-primary">Technical Arsenal</h2>
-                    <p className="text-muted-foreground text-lg font-body">My weapons of choice.</p>
-                </div>
 
                 {/* Bento Grid Layout */}
                 <SkillCard

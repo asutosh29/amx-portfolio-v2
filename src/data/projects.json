@@ -1,29 +1,29 @@
 [
   {
     "id": "1",
-    "title": "E-Commerce Platform",
-    "description": "A fully responsive e-commerce dashboard with real-time analytics and inventory management.",
-    "techStack": ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    "image": "/images/project-1.jpg",
+    "title": "TravelAI",
+    "description": "An AI enabled travel planner which curates personalized travel plans based given information. Use the “Blind Travel” to go on unplanned Adventures, start from your choice explore the limitless possibilities! ",
+    "techStack": ["Flask", "HTML", "CSS", "JS"],
+    "image": "/images/travelai.png",
     "liveLink": "https://example.com",
-    "repoLink": "https://github.com/example/ecommerce"
+    "repoLink": "https://github.com/asutosh29/travel-ai-personal"
   },
   {
     "id": "2",
-    "title": "AI Task Manager",
-    "description": "Smart task management application using OpenAI API to prioritize daily activities.",
-    "techStack": ["React", "FastAPI", "Python", "Tailwind"],
-    "image": "/images/project-2.jpg",
+    "title": "Clickbait Highlighter",
+    "description": "Ever confused with a video title seeming misleading? Clickbait highlighter has got you covered with its “Clickbait Score” and “Highlighting top k Words”, so that u can take a more informed decision. ",
+    "techStack": ["NLP", "Transformers", "ANN", "Tensorflow"],
+    "image": "/images/clickbait.jpg",
     "liveLink": "https://example.com",
-    "repoLink": "https://github.com/example/ai-tasks"
+    "repoLink": "https://github.com/asutosh29/clickbait-highligter-byop24"
   },
   {
     "id": "3",
-    "title": "Portfolio v1",
-    "description": "Information security and performance focused personal website.",
-    "techStack": ["Gatsby", "GraphQL", "Framer Motion"],
-    "image": "/images/project-3.jpg",
+    "title": "SceneIt!",
+    "description": "Have you sceneit? Scene it is an automated event notifier for IITR students (Can be configured for any institue) Don't miss any event of your choice by adding the directly to the calendar from SceneIt. ",
+    "techStack": ["Flask", "HTML", "CSS", "JS", "LLMs"],
+    "image": "/images/sceneit.png",
     "liveLink": "https://example.com",
-    "repoLink": "https://github.com/example/portfolio"
+    "repoLink": "https://github.com/aryan-gupta7/scene-it"
   }
 ]
