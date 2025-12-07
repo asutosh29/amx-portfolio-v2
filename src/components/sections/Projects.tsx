@@ -73,7 +73,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
                             <Github size={16} /> Code
                         </Link>
                     )}
-                    {project.liveLink && (
+                    {project.liveLink && project.liveLink.length > 0 && (
                         <Link
                             href={project.liveLink}
                             target="_blank"
