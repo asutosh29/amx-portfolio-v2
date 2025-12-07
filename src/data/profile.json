@@ -10,7 +10,6 @@
     "twitter": "https://twitter.com/example"
   },
   "skills": {
-  "skills": {
     "frontend": [
       { "name": "React", "asset": "React" },
       { "name": "NextJS", "asset": "NextJS" },
@@ -29,6 +28,5 @@
       { "name": "Figma", "asset": "Figma" },
       { "name": "VS Code", "asset": "VSCode" }
     ]
-  }
   }
 }
