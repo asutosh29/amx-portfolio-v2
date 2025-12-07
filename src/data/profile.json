@@ -1,0 +1,34 @@
+{
+  "name": "Asutosh Maharana",
+  "role": "Full Stack Engineer & UI Designer",
+  "bio": "I build products which make a difference",
+  "location": "Bhubaneswar, Odisha",
+  "email": "asutosh29aaz@gmail.com",
+  "socials": {
+    "github": "https://github.com/asutosh29",
+    "linkedin": "https://linkedin.com/in/asum6",
+    "twitter": "https://twitter.com/example"
+  },
+  "skills": {
+  "skills": {
+    "frontend": [
+      { "name": "React", "asset": "React" },
+      { "name": "NextJS", "asset": "NextJS" },
+      { "name": "Tailwind", "asset": "Tailwind" },
+      { "name": "TypeScript", "asset": "TypeScript" }
+    ],
+    "backend": [
+      { "name": "Node", "asset": "Node" }
+    ],
+    "devops": [
+      { "name": "Docker", "asset": "Docker" },
+      { "name": "AWS", "asset": "AWS" },
+      { "name": "Git", "asset": "Git" }
+    ],
+    "tools": [
+      { "name": "Figma", "asset": "Figma" },
+      { "name": "VS Code", "asset": "VSCode" }
+    ]
+  }
+  }
+}

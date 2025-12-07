@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "title": "E-Commerce Platform",
+    "description": "A fully responsive e-commerce dashboard with real-time analytics and inventory management.",
+    "techStack": ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    "image": "/images/project-1.jpg",
+    "liveLink": "https://example.com",
+    "repoLink": "https://github.com/example/ecommerce"
+  },
+  {
+    "id": "2",
+    "title": "AI Task Manager",
+    "description": "Smart task management application using OpenAI API to prioritize daily activities.",
+    "techStack": ["React", "FastAPI", "Python", "Tailwind"],
+    "image": "/images/project-2.jpg",
+    "liveLink": "https://example.com",
+    "repoLink": "https://github.com/example/ai-tasks"
+  },
+  {
+    "id": "3",
+    "title": "Portfolio v1",
+    "description": "Information security and performance focused personal website.",
+    "techStack": ["Gatsby", "GraphQL", "Framer Motion"],
+    "image": "/images/project-3.jpg",
+    "liveLink": "https://example.com",
+    "repoLink": "https://github.com/example/portfolio"
+  }
+]
