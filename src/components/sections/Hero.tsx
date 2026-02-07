@@ -4,7 +4,7 @@ import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import profile from "@/data/profile.json";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState, MouseEvent } from "react";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
     // Typewriter State

@@ -21,35 +21,49 @@ export function getBlogPosts(): BlogPost[] {
         return [];
     }
 
-    const fileNames = fs.readdirSync(contentDirectory);
-    const allPostsData = fileNames
-        .filter((fileName) => fileName.endsWith('.md'))
-        .map((fileName) => {
-            const slug = fileName.replace(/\.md$/, '');
-            const fullPath = path.join(contentDirectory, fileName);
-            const fileContents = fs.readFileSync(fullPath, 'utf8');
-            const { data, content } = matter(fileContents);
+    try {
+        const fileNames = fs.readdirSync(contentDirectory);
+        const allPostsData = fileNames
+            .filter((fileName) => fileName.endsWith('.md'))
+            .map((fileName) => {
+                const slug = fileName.replace(/\.md$/, '');
+                const fullPath = path.join(contentDirectory, fileName);
 
-            return {
-                slug,
-                title: data.title ?? 'Untitled',
-                date: data.date ?? new Date().toISOString(),
-                author: data.author ?? 'Anonymous',
-                coverImage: data.coverImage,
-                excerpt: data.excerpt,
-                tags: data.tags ?? [],
-                content,
-            };
+                try {
+                    const fileContents = fs.readFileSync(fullPath, 'utf8');
+                    const { data, content } = matter(fileContents);
+
+                    const post: BlogPost = {
+                        slug,
+                        title: data.title ?? 'Untitled',
+                        date: data.date ?? new Date().toISOString(),
+                        author: data.author ?? 'Anonymous',
+                        coverImage: data.coverImage,
+                        excerpt: data.excerpt,
+                        tags: data.tags ?? [],
+                        content,
+                    };
+
+                    return post;
+                } catch (e) {
+                    console.error(`Error reading blog post ${fileName}:`, e);
+                    return null;
+                }
+            })
+            .filter((post): post is BlogPost => post !== null);
+
+        // Sort posts by date
+        return allPostsData.sort((a, b) => {
+            if (a.date < b.date) {
+                return 1;
+            } else {
+                return -1;
+            }
         });
-
-    // Sort posts by date
-    return allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
-            return 1;
-        } else {
-            return -1;
-        }
-    });
+    } catch (e) {
+        console.error('Error reading blog directory:', e);
+        return [];
+    }
 }
 
 export function getBlogPost(slug: string): BlogPost | null {
@@ -59,17 +73,22 @@ export function getBlogPost(slug: string): BlogPost | null {
         return null;
     }
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+    try {
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data, content } = matter(fileContents);
 
-    return {
-        slug,
-        title: data.title ?? 'Untitled',
-        date: data.date ?? new Date().toISOString(),
-        author: data.author ?? 'Anonymous',
-        coverImage: data.coverImage,
-        excerpt: data.excerpt,
-        tags: data.tags ?? [],
-        content,
-    };
+        return {
+            slug,
+            title: data.title ?? 'Untitled',
+            date: data.date ?? new Date().toISOString(),
+            author: data.author ?? 'Anonymous',
+            coverImage: data.coverImage,
+            excerpt: data.excerpt,
+            tags: data.tags ?? [],
+            content,
+        };
+    } catch (e) {
+        console.error(`Error reading blog post ${slug}:`, e);
+        return null;
+    }
 }

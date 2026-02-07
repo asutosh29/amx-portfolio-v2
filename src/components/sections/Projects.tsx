@@ -6,10 +6,19 @@ import { Github, ExternalLink, ImageOff } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+
+interface Project {
+    id: string | number;
+    title: string;
+    description: string;
+    techStack: string[];
+    repoLink?: string;
+    liveLink?: string;
+    image?: string;
+}
 
 // Separate component to handle per-project image state
-function ProjectCard({ project, index }: { project: any, index: number }) {
+function ProjectCard({ project, index }: { project: Project, index: number }) {
     const [imageError, setImageError] = useState(false);
 
     return (
@@ -106,7 +115,7 @@ export default function Projects() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project, index) => (
-                    <ProjectCard key={project.id} project={project} index={index} />
+                    <ProjectCard key={project.id} project={project as Project} index={index} />
                 ))}
             </div>
         </section>

@@ -1,5 +1,6 @@
 import { getBlogPost, getBlogPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import { format } from 'date-fns';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
@@ -11,6 +12,38 @@ interface BlogPostPageProps {
     params: Promise<{
         slug: string;
     }>;
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const post = getBlogPost(slug);
+
+    if (!post) {
+        return {
+            title: 'Not Found',
+            description: 'The page you are looking for does not exist.',
+        };
+    }
+
+    return {
+        title: `${post.title} | AntiGravity`,
+        description: post.excerpt || `Read ${post.title} on AntiGravity.`,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt || `Read ${post.title} on AntiGravity.`,
+            type: 'article',
+            publishedTime: post.date,
+            authors: [post.author],
+            tags: post.tags,
+            images: post.coverImage ? [{ url: post.coverImage }] : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt || `Read ${post.title} on AntiGravity.`,
+            images: post.coverImage ? [post.coverImage] : [],
+        },
+    };
 }
 
 export async function generateStaticParams() {
@@ -78,7 +111,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </header>
 
                 {/* Content */}
-                <div className="prose prose-invert prose-lg max-w-none 
+                <div className="prose prose-invert prose-lg max-w-none
                     prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight
                     prose-h1:text-4xl prose-h1:mb-8 prose-h1:text-foreground
                     prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:text-foreground prose-h2:border-b prose-h2:border-border/50 prose-h2:pb-2
@@ -86,13 +119,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
                     prose-li:text-muted-foreground prose-li:my-2
                     prose-strong:text-primary/90 prose-strong:font-bold
-                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline 
+                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
                     prose-blockquote:border-l-primary prose-blockquote:bg-secondary/10 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:my-8 prose-blockquote:text-foreground/80 prose-blockquote:italic
                     prose-code:text-primary prose-code:bg-secondary/20 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
                     ">
                     <ReactMarkdown
                         components={{
                             code(props) {
+                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                                 const { children, className, node, ...rest } = props;
                                 const match = /language-(\w+)/.exec(className || '');
                                 return match ? (
