@@ -1,29 +1,36 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlogPost } from '@/lib/blog';
 import { format } from 'date-fns';
-import { Calendar, User } from 'lucide-react';
+import { Calendar, User, ImageOff } from 'lucide-react';
+import { useState } from 'react';
 
 interface BlogCardProps {
     post: BlogPost;
 }
 
 export function BlogCard({ post }: BlogCardProps) {
+    const [imageError, setImageError] = useState(false);
+
     return (
         <Link href={`/blogs/${post.slug}`} className="group block h-full">
-            <div className="h-full border border-border bg-card hover:border-primary/50 transition-colors duration-300 rounded-lg overflow-hidden flex flex-col">
+            <div className="h-full border border-border bg-card hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 rounded-lg overflow-hidden flex flex-col">
                 {/* Image Section */}
                 <div className="relative h-48 w-full bg-muted overflow-hidden">
-                    {post.coverImage ? (
+                    {post.coverImage && !imageError ? (
                         <Image
                             src={post.coverImage}
                             alt={post.title}
                             fill
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            onError={() => setImageError(true)}
                         />
                     ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-muted-foreground">
-                            <span className="font-heading text-xl">No Image</span>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-secondary/5 text-muted-foreground gap-2">
+                            <ImageOff className="w-8 h-8 opacity-50" />
+                            <span className="font-heading text-sm uppercase tracking-wider opacity-70">No Signal</span>
                         </div>
                     )}
                 </div>
@@ -41,7 +48,7 @@ export function BlogCard({ post }: BlogCardProps) {
                         </div>
                     </div>
 
-                    <h2 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors text-foreground">
+                    <h2 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors text-foreground line-clamp-2">
                         {post.title}
                     </h2>
 

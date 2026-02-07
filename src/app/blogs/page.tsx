@@ -1,5 +1,5 @@
 import { getBlogPosts } from '@/lib/blog';
-import { BlogCard } from '@/components/blog/BlogCard';
+import { BlogList } from '@/components/blog/BlogList';
 
 export const metadata = {
     title: 'Blog | AntiGravity',
@@ -24,17 +24,7 @@ export default function BlogPage() {
                     </p>
                 </header>
 
-                {posts.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {posts.map((post) => (
-                            <BlogCard key={post.slug} post={post} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 text-muted-foreground font-mono border border-dashed border-border rounded-lg">
-                        [NO_TRANSMISSIONS_FOUND]
-                    </div>
-                )}
+                <BlogList initialPosts={posts} />
             </div>
         </main>
     );

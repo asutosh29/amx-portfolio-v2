@@ -28,6 +28,7 @@ function SkillCard({
     // Helper to render icon
     const SkillIcon = ({ name }: { name: string }) => {
         // Safe access to Icons
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const IconComponent = (Icons as any)[name] || null;
         return IconComponent ? <IconComponent className="w-8 h-8 mb-2 text-primary" /> : null;
     };
@@ -80,6 +81,7 @@ function SkillCard({
 
 export default function Skills() {
     // Cast to expected type safely
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const skillsData = profile.skills as any;
 
     // Provide defaults if undefined
